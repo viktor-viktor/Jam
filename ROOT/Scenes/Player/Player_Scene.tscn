@@ -1,17 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player/PlayerController.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Background/shining.png" type="Texture" id=2]
 [ext_resource path="res://Assets/export/marine_walk.png" type="Texture" id=3]
 [ext_resource path="res://Assets/export/marine_idle.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Player/DeathTrigger.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 22.189, 32.1154 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 137.478, 363.05 )
 
 [node name="Player_Scene" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
 script = ExtResource( 1 )
+path_to_camera = NodePath("../Camera2D")
 path_to_run_animation = NodePath("RunAnimation")
 path_to_jump_animation = NodePath("IdleAnimation")
 path_to_idle_animation = NodePath("IdleAnimation")
@@ -42,8 +47,8 @@ hframes = 3
 position = Vector2( -2.52899, 0 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( -0.000152588, 1.29233 )
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -0.000152588, -68.5215 )
 current = true
 drag_margin_left = 0.0
 drag_margin_top = 1.0
@@ -51,5 +56,12 @@ drag_margin_right = 0.0
 drag_margin_bottom = 1.0
 editor_draw_drag_margin = true
 
-[node name="Position2D" type="Position2D" parent="Player"]
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+position = Vector2( -337.895, 2.10529 )
+script = ExtResource( 5 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2( -366.702, 25.7825 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Camera2D/Area2D" to="Camera2D/Area2D" method="_on_Area2D_body_entered"]
