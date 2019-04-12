@@ -1,22 +1,35 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Player/PlayerController.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/export/marine_walk.png" type="Texture" id=2]
+[ext_resource path="res://Assets/export/marine_idle.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.8056, 32.1154 )
+extents = Vector2( 22.189, 32.1154 )
 
 [node name="Player_Scene" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 3.05176e-005, 3.05176e-005 )
-scale = Vector2( 0.866635, 1.5768 )
 script = ExtResource( 1 )
+path_to_run_animation = NodePath("RunAnimation")
+path_to_jump_animation = NodePath("IdleAnimation")
+path_to_idle_animation = NodePath("IdleAnimation")
 
-[node name="Sprite" type="Sprite" parent="Player"]
+[node name="RunAnimation" type="Sprite" parent="Player"]
+visible = false
+scale = Vector2( 0.301591, 0.301591 )
 texture = ExtResource( 2 )
+hframes = 4
+
+[node name="IdleAnimation" type="Sprite" parent="Player"]
+visible = false
+scale = Vector2( 0.301591, 0.301591 )
+texture = ExtResource( 3 )
+vframes = 3
+hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( -2.52899, 0 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
