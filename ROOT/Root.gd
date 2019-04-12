@@ -19,6 +19,17 @@ func change_world_state(state):
 	
 	
 func _unhandled_input(event):
+	if event is InputEventJoypadButton and event.pressed:
+		if event.get_button_index() == JOY_XBOX_A:
+			change_world_state(WorldStates.GREEN)
+		elif event.get_button_index() == JOY_XBOX_X:
+			change_world_state(WorldStates.BLUE)
+		elif event.get_button_index() == JOY_XBOX_Y:
+			change_world_state(WorldStates.YELLOW)
+		elif event.get_button_index() == JOY_XBOX_B:
+			change_world_state(WorldStates.RED)
+	
+	
 	if event is InputEventKey and event.pressed:
 		if event.scancode == KEY_ESCAPE:
             get_tree().quit()
