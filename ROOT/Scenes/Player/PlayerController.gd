@@ -23,6 +23,10 @@ onready var idle_animation = get_node(path_to_idle_animation)
 
 onready var current_animation = idle_animation
 
+export(NodePath) var path_to_flash_animation
+onready var flash_animation = get_node(path_to_flash_animation)
+export(int) var flash_frames_per_second = 15
+
 ########################## CONST ##############################
 const SPEED = 400
 const GRAVITY = 80
@@ -41,6 +45,7 @@ var current_jump_time_left = JUMP_DURATION
 var player_state = null
 
 var timer
+var flash_timer
 var player_health = 5
 
 ########################### SIGNALS ############################
@@ -54,7 +59,16 @@ func _ready():
 	add_child(timer)
 	timer.wait_time = 1.0 / FRAMES_PER_SECOND
 	timer.start()
+	
+	flash_timer = Timer.new()
+	flash_timer.connect("timeout", self, "flash_tick")
+	add_child(flash_timer)
+	flash_timer.wait_time = 1.0 / flash_frames_per_second
+	flash_timer.start()
+	
 	set_state(State.Idle)
+	
+	Root.connect("state_changed", self, "world_state_handler")
 	
 	var root = get_node("/root/Root")
 	#root.connect("player_dead", self, "_on_player_dead")
@@ -113,6 +127,15 @@ func tick():
 		current_animation.frame += 1
 	else:
 		current_animation.frame = 0
+		
+func flash_tick():
+	if flash_animation.visible:
+		var current_flash_frames_count = flash_animation.vframes * flash_animation.hframes
+		if flash_animation.frame < current_flash_frames_count - 2:
+			flash_animation.frame += 2
+		else:
+			flash_animation.frame = 0
+			flash_animation.visible = false
 
 func set_state(state):
 	var old_state = player_state
@@ -133,6 +156,23 @@ func on_state_changed(state):
 		current_animation = jump_animation
 		
 	current_animation.visible = true
+
+func _start_flash():
+	flash_animation.frame = 0
+	flash_animation.visible = true
+
+func world_state_handler(new_state):
+	
+	if new_state == Root.WorldStates.RED:
+		flash_animation.modulate = Color(1, 0.2, 0.2)
+	elif new_state == Root.WorldStates.GREEN:
+		flash_animation.modulate = Color(0.2, 1, 0.2)
+	elif new_state == Root.WorldStates.YELLOW:
+		flash_animation.modulate = Color(1, 1, 0.2)
+	elif new_state == Root.WorldStates.BLUE:
+		flash_animation.modulate = Color(0.2, 0.2, 1)
+	
+	_start_flash()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
