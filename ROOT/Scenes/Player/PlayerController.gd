@@ -8,7 +8,7 @@ const UP = Vector2(0, -1)
 
 const SPEED = 400
 const GRAVITY = 80
-const JUMP_HEIGHT = -700
+const JUMP_HEIGHT = -600
 const JUMP_FORCE = -180
 const JUMP_DURATION = 0.08
 
