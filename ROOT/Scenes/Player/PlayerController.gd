@@ -73,7 +73,7 @@ func _process(delta):
 	if is_on_floor:	
 		current_jump_time_left = JUMP_DURATION	
 	
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("Jump"):
 			motion.y = JUMP_HEIGHT
 			player_state = set_state(State.Jump)
 		elif motion.x != 0.0:
@@ -84,7 +84,7 @@ func _process(delta):
 		
 		current_jump_time_left += delta 
 		
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("Jump"):
 			motion.y += JUMP_FORCE * JUMP_DURATION / current_jump_time_left
 	
 	motion = move_and_slide(motion, UP)
