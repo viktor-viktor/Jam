@@ -33,6 +33,8 @@ const GRAVITY = 80
 const JUMP_HEIGHT = -600
 const JUMP_FORCE = -180
 const JUMP_DURATION = 0.08
+const IDLE_DURARION = 1.5
+var IDLE_TIME = 0.0
 export(int) var FRAMES_PER_SECOND = 8
 
 
@@ -51,6 +53,7 @@ signal player_dead
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("player")
 	timer = Timer.new()
 	timer.connect("timeout", self, "tick")
 	add_child(timer)
@@ -73,12 +76,11 @@ func _ready():
 func _process(delta):
 	motion.y += GRAVITY
 	
-	motion.x = 0
+	IDLE_TIME += delta
+	if IDLE_TIME < IDLE_DURARION:
+		return
 	
-	if Input.is_action_pressed("ui_right"):
-		motion.x += SPEED
-	if Input.is_action_pressed("ui_left"):
-		motion.x += -SPEED
+	motion.x = SPEED
 	
 	var is_on_floor = is_on_floor()
 	
