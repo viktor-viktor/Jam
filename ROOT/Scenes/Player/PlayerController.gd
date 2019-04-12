@@ -6,11 +6,11 @@ extends KinematicBody2D
 
 const UP = Vector2(0, -1)
 
-const SPEED = 400
-const GRAVITY = 80
-const JUMP_HEIGHT = -600
-const JUMP_FORCE = -180
-const JUMP_DURATION = 0.08
+export var SPEED = 400
+export var GRAVITY = 80
+export var JUMP_HEIGHT = -700
+export var JUMP_FORCE = -180
+export var JUMP_DURATION = 0.08
 
 var motion = Vector2()
 var is_jump_started = false
@@ -35,7 +35,7 @@ func _process(delta):
 	if is_on_floor:	
 		current_jump_time_left = JUMP_DURATION	
 	
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_action_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
 	else:
 		
