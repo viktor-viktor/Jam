@@ -25,6 +25,17 @@ func change_world_state(state):
 	# Further method to change state for each required scene must be called
 	
 func _unhandled_input(event):
+	if event is InputEventJoypadButton and event.pressed:
+		if event.get_button_index() == JOY_XBOX_A:
+			change_world_state(WorldStates.GREEN)
+		elif event.get_button_index() == JOY_XBOX_X:
+			change_world_state(WorldStates.BLUE)
+		elif event.get_button_index() == JOY_XBOX_Y:
+			change_world_state(WorldStates.YELLOW)
+		elif event.get_button_index() == JOY_XBOX_B:
+			change_world_state(WorldStates.RED)
+	
+	
 	if event is InputEventKey and event.pressed:
 		if event.scancode == KEY_ESCAPE:
             get_tree().quit()
@@ -40,3 +51,9 @@ func _unhandled_input(event):
 
 func _on_player_dead():
 	pass #to be implemented
+	
+func _ready():
+	#var player = get_node("Player")
+	#var player = $Game.Player
+	#player.connect("player_dead", self, _on_player_dead())
+	pass
