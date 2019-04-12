@@ -16,6 +16,7 @@ position = Vector2( 540, 300 )
 position = Vector2( 4210, 200 )
 linear_velocity = Vector2( -300, 0 )
 linear_damp = 0.0
+angular_velocity = 4.0
 
 [node name="Ball2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 4420, 420 )
