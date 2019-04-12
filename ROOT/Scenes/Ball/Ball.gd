@@ -33,6 +33,9 @@ func _ready():
 	angular_velocity = 0
 	_set_rand_asteroid_state()
 	Root.connect("state_changed", self, "world_state_handler")
+	contacts_reported = 100
+	contact_monitor = true
+	self.connect("body_entered", self, "_on_body_entered")
 
 func start():
 	angular_velocity = rand_range(0, 5.0)
@@ -58,8 +61,6 @@ func set_active(flag : bool):
 	else:
 		$Sprite.self_modulate.a8 /= 2
 	
-
-
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
 		if event.scancode == KEY_SPACE:
@@ -74,3 +75,9 @@ func _set_rand_asteroid_state() -> void:
 
 func get_object_type():
 	return Root.ObjectsTypes.Commet
+	
+func _on_body_entered(body):
+	if body.has_method("get_object_type"):
+		var type = body.get_object_type()
+		if type == Root.ObjectsTypes.Player:
+			body.change_player_health(1000)

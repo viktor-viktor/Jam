@@ -71,7 +71,7 @@ func _ready():
 	Root.connect("state_changed", self, "world_state_handler")
 	
 	var root = get_node("/root/Root")
-	#root.connect("player_dead", self, "_on_player_dead")
+	self.connect("player_dead", Root, "_on_player_dead")
 	
 func _process(delta):
 	motion.y += GRAVITY
@@ -174,6 +174,5 @@ func world_state_handler(new_state):
 	
 	_start_flash()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func get_object_type():
+	return Root.ObjectsTypes.Player

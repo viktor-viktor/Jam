@@ -14,7 +14,8 @@ enum ObjectsTypes{
 	Ground,
 	Commet,
 	Platform,
-	Block
+	Block,
+	Player
 }
 
 func change_world_state(state):
@@ -36,13 +37,12 @@ func _check_input():
 		change_world_state(WorldStates.RED)
 	elif Input.is_action_just_pressed("SetYellow"):
 		change_world_state(WorldStates.YELLOW)
+	elif Input.is_action_just_pressed("Exit"):
+		get_tree().quit()
 		
 
 func _on_player_dead():
 	pass #to be implemented
 	
 func _ready():
-	#var player = get_node("Player")
-	#var player = $Game.Player
-	#player.connect("player_dead", self, _on_player_dead())
 	pass
