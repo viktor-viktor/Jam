@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tiles/material1.png" type="Texture" id=1]
-[ext_resource path="res://Tiles/material2.png" type="Texture" id=2]
-[ext_resource path="res://Tiles/material3.jpg" type="Texture" id=3]
-[ext_resource path="res://Tiles/mat1_all.png" type="Texture" id=4]
+[ext_resource path="res://Tiles/Material1.gd" type="Script" id=2]
+[ext_resource path="res://Tiles/material2.png" type="Texture" id=3]
+[ext_resource path="res://Tiles/Material2.gd" type="Script" id=4]
+[ext_resource path="res://Tiles/material3.jpg" type="Texture" id=5]
+[ext_resource path="res://Tiles/mat1_all.png" type="Texture" id=6]
+[ext_resource path="res://Tiles/Material4.gd" type="Script" id=7]
+[ext_resource path="res://Tiles/Material5.gd" type="Script" id=8]
+[ext_resource path="res://Tiles/Material6.gd" type="Script" id=9]
+[ext_resource path="res://Tiles/Material7.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 128, 128 )
@@ -13,66 +19,78 @@ extents = Vector2( 128, 128 )
 [node name="Material1" type="Sprite" parent="."]
 position = Vector2( 128, 128 )
 texture = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Material1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Material1/StaticBody2D"]
 shape = SubResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Material2" type="Sprite" parent="."]
 position = Vector2( 400, 128 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Material2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Material2/StaticBody2D"]
 shape = SubResource( 1 )
+script = ExtResource( 4 )
 
 [node name="Material3" type="Sprite" parent="."]
 position = Vector2( 672, 128 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="Material4" type="Sprite" parent="."]
 position = Vector2( 944, 128 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 256, 0, 256, 256 )
+script = ExtResource( 7 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Material4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Material4/StaticBody2D"]
 shape = SubResource( 1 )
+script = ExtResource( 7 )
 
 [node name="Material5" type="Sprite" parent="."]
 position = Vector2( 1216, 128 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 512, 0, 256, 256 )
+script = ExtResource( 8 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Material5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Material5/StaticBody2D"]
 shape = SubResource( 1 )
+script = ExtResource( 8 )
 
 [node name="Material6" type="Sprite" parent="."]
 position = Vector2( 1488, 128 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 768, 0, 256, 256 )
+script = ExtResource( 9 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Material6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Material6/StaticBody2D"]
 shape = SubResource( 1 )
+script = ExtResource( 9 )
 
 [node name="Material7" type="Sprite" parent="."]
 position = Vector2( 1760, 128 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 1024, 0, 256, 256 )
+script = ExtResource( 10 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Material7"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Material7/StaticBody2D"]
 shape = SubResource( 1 )
+script = ExtResource( 10 )
 

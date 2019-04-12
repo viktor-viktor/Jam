@@ -3,7 +3,10 @@ extends Node2D
 export(Root.WorldStates) var platform_type = Root.WorldStates.YELLOW
 
 func _ready():
-	change_world_state(platform_type)
+	pass#change_world_state(platform_type)
+	
+func get_object_type():
+	return Root.ObjectsTypes.Platform
 	
 func change_world_state(state):
 	
