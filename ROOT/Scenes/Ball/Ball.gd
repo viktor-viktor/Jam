@@ -30,10 +30,13 @@ func _set_acteroid_type(type):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	angular_velocity = 0
 	_set_rand_asteroid_state()
-	angular_velocity = rand_range(0, 5.0);
 	Root.connect("state_changed", self, "world_state_handler")
 
+func start():
+	angular_velocity = rand_range(0, 5.0)
+	linear_velocity.x = -300
 
 func _on_Button_pressed():
     set_active(!__active)
