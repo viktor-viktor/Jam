@@ -12,6 +12,9 @@ enum State{
 
 const UP = Vector2(0, -1)
 
+export(NodePath) var path_to_camera
+onready var camera = get_node(path_to_camera)
+
 export(NodePath) var path_to_run_animation
 onready var run_animation = get_node(path_to_run_animation)
 
@@ -81,6 +84,7 @@ func _process(delta):
 		return
 	
 	motion.x = SPEED
+	camera.position.x += SPEED * delta
 	
 	var is_on_floor = is_on_floor()
 	

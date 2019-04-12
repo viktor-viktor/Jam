@@ -51,7 +51,7 @@ func _unhandled_input(event):
 			change_world_state(WorldStates.GREEN)
 
 func _on_player_dead():
-	pass #to be implemented
+	get_tree().change_scene("res://Scenes/Start/Start.tscn")
 	
 func _ready():
 	pass
