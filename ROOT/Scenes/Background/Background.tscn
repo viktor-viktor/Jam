@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Background/Space.jpg" type="Texture" id=1]
+[ext_resource path="res://Scenes/Background/Stars.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Background/Spaceship.png" type="Texture" id=3]
+
+[node name="Background" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2( 0, -1000 )
+transform = Transform2D( 1, 0, 0, 1, 0, -1000 )
+
+[node name="Back" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 3480, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Back"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Stars" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 1687, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Stars"]
+position = Vector2( 0, 1000 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="SpaceShip" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0.8 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/SpaceShip"]
+position = Vector2( 0, 1000 )
+texture = ExtResource( 3 )
+centered = false
+
