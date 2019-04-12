@@ -25,33 +25,24 @@ func change_world_state(state):
 		return
 	# Further method to change state for each required scene must be called
 	
-func _unhandled_input(event):
-	if event is InputEventJoypadButton and event.pressed:
-		if event.get_button_index() == JOY_XBOX_A:
-			change_world_state(WorldStates.GREEN)
-		elif event.get_button_index() == JOY_XBOX_X:
-			change_world_state(WorldStates.BLUE)
-		elif event.get_button_index() == JOY_XBOX_Y:
-			change_world_state(WorldStates.YELLOW)
-		elif event.get_button_index() == JOY_XBOX_B:
-			change_world_state(WorldStates.RED)
-	
-	
-	if event is InputEventKey and event.pressed:
-		if event.scancode == KEY_ESCAPE:
-            get_tree().quit()
+func _process(delta):
+	_check_input()
+
+func _check_input():
+	if Input.is_action_just_pressed("SetGreen"):
+		change_world_state(WorldStates.GREEN)
+	elif Input.is_action_just_pressed("SetBlue"):
+		change_world_state(WorldStates.BLUE)
+	elif Input.is_action_just_pressed("SetRed"):
+		change_world_state(WorldStates.RED)
+	elif Input.is_action_just_pressed("SetYellow"):
+		change_world_state(WorldStates.YELLOW)
+	elif Input.is_action_just_pressed("Exit"):
+		get_tree().quit()
 		
-		elif event.scancode == KEY_Q:
-            change_world_state(WorldStates.YELLOW)
-		elif event.scancode == KEY_W:
-			change_world_state(WorldStates.RED)
-		elif event.scancode == KEY_E:
-			change_world_state(WorldStates.BLUE)
-		elif event.scancode == KEY_R:
-			change_world_state(WorldStates.GREEN)
 
 func _on_player_dead():
-	pass #to be implemented
+	get_tree().change_scene("res://Scenes/Start/Start.tscn")
 	
 func _ready():
 	pass

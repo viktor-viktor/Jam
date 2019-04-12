@@ -12,6 +12,9 @@ enum State{
 
 const UP = Vector2(0, -1)
 
+export(NodePath) var path_to_camera
+onready var camera = get_node(path_to_camera)
+
 export(NodePath) var path_to_run_animation
 onready var run_animation = get_node(path_to_run_animation)
 
@@ -81,13 +84,14 @@ func _process(delta):
 		return
 	
 	motion.x = SPEED
+	camera.position.x += SPEED * delta
 	
 	var is_on_floor = is_on_floor()
 	
 	if is_on_floor:	
 		current_jump_time_left = JUMP_DURATION	
 	
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("Jump"):
 			motion.y = JUMP_HEIGHT
 			player_state = set_state(State.Jump)
 		elif motion.x != 0.0:
@@ -98,7 +102,7 @@ func _process(delta):
 		
 		current_jump_time_left += delta 
 		
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("Jump"):
 			motion.y += JUMP_FORCE * JUMP_DURATION / current_jump_time_left
 	
 	motion = move_and_slide(motion, UP)
