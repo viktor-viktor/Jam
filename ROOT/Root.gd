@@ -40,3 +40,7 @@ func _unhandled_input(event):
 
 func _on_player_dead():
 	pass #to be implemented
+	
+func _ready():
+	var player = get_node("Game/Player_Scene/Player")
+	player.connect("player_dead", self, _on_player_dead())
