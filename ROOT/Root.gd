@@ -42,7 +42,7 @@ func _check_input():
 		
 
 func _on_player_dead():
-	get_tree().change_scene("res://Scenes/Start/Start.tscn")
+	get_tree().change_scene("res://Scenes/End/End.tscn")
 	
 func _ready():
 	pass
