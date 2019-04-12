@@ -11,7 +11,7 @@ offset = Vector2( 800, -700 )
 transform = Transform2D( 1, 0, 0, 1, 800, -700 )
 
 [node name="Back" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0, 0 )
+motion_scale = Vector2( 0.02, 0.02 )
 motion_mirroring = Vector2( 1920, 1200 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Back"]
@@ -23,7 +23,7 @@ motion_scale = Vector2( 0.05, 0.05 )
 motion_mirroring = Vector2( 1920, 1200 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Stars"]
-position = Vector2( 0, 1000 )
+position = Vector2( -800, 700 )
 texture = ExtResource( 2 )
 centered = false
 
