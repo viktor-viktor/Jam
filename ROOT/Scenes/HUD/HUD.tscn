@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/HUD/dpad-helper.png" type="Texture" id=1]
+
+[node name="HUD" type="Node2D"]
+position = Vector2( 248.732, 420.931 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+
