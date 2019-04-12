@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="New Game Project"
+
 run/main_scene="res://Scenes/Start/Start.tscn"
 config/icon="res://icon.png"
 
@@ -23,15 +24,6 @@ config/icon="res://icon.png"
 
 Root="*res://Root.gd"
 
-[display]
-
-window/size/height=576
-window/size/borderless=true
-window/size/fullscreen=true
-window/stretch/mode="2d"
-window/stretch/aspect="keep"
-
 [rendering]
 
-quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
