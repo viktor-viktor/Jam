@@ -68,8 +68,6 @@ func _set_rand_asteroid_state() -> void:
 	var rand_int = randi() % enum_size
 	var new_type = Root.WorldStates.values()[rand_int]
 	_set_acteroid_type(new_type)
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#$Sprite.modulate.a *= 0.0001
+func get_object_type():
+	return Root.ObjectsTypes.Commet

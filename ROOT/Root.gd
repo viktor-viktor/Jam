@@ -10,13 +10,19 @@ enum WorldStates {
 
 signal state_changed(new_state)
 
+enum ObjectsTypes{
+	Ground,
+	Commet,
+	Platform,
+	Block
+}
+
 func change_world_state(state):
 
 	emit_signal("state_changed", state)
 	if not state in WorldStates:
 		return
 	# Further method to change state for each required scene must be called
-	
 	
 func _unhandled_input(event):
 	if event is InputEventJoypadButton and event.pressed:
@@ -42,3 +48,10 @@ func _unhandled_input(event):
 			change_world_state(WorldStates.BLUE)
 		elif event.scancode == KEY_R:
 			change_world_state(WorldStates.GREEN)
+
+func _on_player_dead():
+	pass #to be implemented
+	
+func _ready():
+	var player = get_node("Game/Player_Scene/Player")
+	player.connect("player_dead", self, _on_player_dead())
