@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Player/PlayerController.gd" type="Script" id=1]
-[ext_resource path="res://Assets/export/marine_walk.png" type="Texture" id=2]
-[ext_resource path="res://Assets/export/marine_idle.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Background/shining.png" type="Texture" id=2]
+[ext_resource path="res://Assets/export/marine_walk.png" type="Texture" id=3]
+[ext_resource path="res://Assets/export/marine_idle.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 22.189, 32.1154 )
@@ -14,17 +15,26 @@ script = ExtResource( 1 )
 path_to_run_animation = NodePath("RunAnimation")
 path_to_jump_animation = NodePath("IdleAnimation")
 path_to_idle_animation = NodePath("IdleAnimation")
+path_to_flash_animation = NodePath("FlashAnimation")
+flash_frames_per_second = 500
+
+[node name="FlashAnimation" type="Sprite" parent="Player"]
+visible = false
+scale = Vector2( 0.42751, 0.42751 )
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 8
 
 [node name="RunAnimation" type="Sprite" parent="Player"]
 visible = false
 scale = Vector2( 0.301591, 0.301591 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 hframes = 4
 
 [node name="IdleAnimation" type="Sprite" parent="Player"]
 visible = false
 scale = Vector2( 0.301591, 0.301591 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 vframes = 3
 hframes = 3
 
