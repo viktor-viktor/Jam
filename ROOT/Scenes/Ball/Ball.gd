@@ -30,7 +30,8 @@ func _set_acteroid_type(type):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_set_acteroid_type(Root.WorldStates.YELLOW)
+	_set_rand_asteroid_state()
+	angular_velocity = rand_range(0, 5.0);
 	Root.connect("state_changed", self, "world_state_handler")
 
 
@@ -59,11 +60,15 @@ func set_active(flag : bool):
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
 		if event.scancode == KEY_SPACE:
-			var enum_size = int(Root.WorldStates.size())
-			var rand_int = randi() % enum_size
-			var new_type = Root.WorldStates.values()[rand_int]
-			_set_acteroid_type(new_type)
+			_set_rand_asteroid_state()
 
+
+func _set_rand_asteroid_state() -> void:
+	var enum_size = int(Root.WorldStates.size())
+	var rand_int = randi() % enum_size
+	var new_type = Root.WorldStates.values()[rand_int]
+	_set_acteroid_type(new_type)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

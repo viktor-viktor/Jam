@@ -20,7 +20,10 @@ func change_world_state(state):
 	
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
-		if event.scancode == KEY_Q:
+		if event.scancode == KEY_ESCAPE:
+            get_tree().quit()
+		
+		elif event.scancode == KEY_Q:
             change_world_state(WorldStates.YELLOW)
 		elif event.scancode == KEY_W:
 			change_world_state(WorldStates.RED)
