@@ -56,3 +56,4 @@ func _ready():
 	#var player = get_node("Player")
 	#var player = $Game.Player
 	#player.connect("player_dead", self, _on_player_dead())
+	pass
