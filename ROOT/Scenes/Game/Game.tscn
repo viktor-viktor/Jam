@@ -32,8 +32,8 @@ scale = Vector2( 1, 3 )
 ball = NodePath("../Ball2")
 
 [node name="Ball" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1568, 416 )
+position = Vector2( 3529.68, 3.01392 )
 
 [node name="Ball2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 3904, 333.5 )
+position = Vector2( 4368.61, 178.63 )
 
