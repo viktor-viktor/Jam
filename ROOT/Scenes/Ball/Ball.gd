@@ -1,13 +1,18 @@
 extends RigidBody2D
 export(Root.WorldStates) var platform_type = Root.WorldStates.YELLOW
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 onready var __active = true
 
+func your_handler():
+   _on_Button_pressed()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Root.connect("state_changed", self, "your_handler")
 	pass # Replace with function body.
 
 
@@ -32,6 +37,7 @@ func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
 		if event.scancode == KEY_A:
             _on_Button_pressed()
+			
 		elif event.scancode == KEY_Q:
 			$Sprite.self_modulate = Color(0.5, 1, 0.5)
 		elif event.scancode == KEY_W:
