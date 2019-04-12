@@ -12,13 +12,6 @@ enum State{
 
 const UP = Vector2(0, -1)
 
-export var SPEED = 400
-export var GRAVITY = 80
-export var JUMP_HEIGHT = -700
-export var JUMP_FORCE = -180
-export var JUMP_DURATION = 0.08
-export(int) var FRAMES_PER_SECOND = 8
-
 export(NodePath) var path_to_run_animation
 onready var run_animation = get_node(path_to_run_animation)
 
@@ -30,11 +23,26 @@ onready var idle_animation = get_node(path_to_idle_animation)
 
 onready var current_animation = idle_animation
 
+########################## CONST ##############################
+const SPEED = 400
+const GRAVITY = 80
+const JUMP_HEIGHT = -600
+const JUMP_FORCE = -180
+const JUMP_DURATION = 0.08
+export(int) var FRAMES_PER_SECOND = 8
+
+
+########################### VAR ###############################
 var motion = Vector2()
 var current_jump_time_left = JUMP_DURATION
+
 var player_state = null
 
 var timer
+var player_health = 5
+
+########################### SIGNALS ############################
+signal player_dead	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,7 +52,10 @@ func _ready():
 	timer.wait_time = 1.0 / FRAMES_PER_SECOND
 	timer.start()
 	set_state(State.Idle)
-
+	
+	var root = get_node("/root/Root")
+	#root.connect("player_dead", self, "_on_player_dead")
+	
 func _process(delta):
 	motion.y += GRAVITY
 	
@@ -74,8 +85,25 @@ func _process(delta):
 		if Input.is_action_pressed("ui_up"):
 			motion.y += JUMP_FORCE * JUMP_DURATION / current_jump_time_left
 	
-	
 	motion = move_and_slide(motion, UP)
+	
+	var collision_count = get_slide_count()
+	for i in  collision_count:
+		var collision_info = get_slide_collision(i)
+		if collision_info:
+			if collision_info.collider.has_method("get_object_type"):
+				var type = collision_info.collider.get_object_type()
+				
+				if type == Root.ObjectsTypes.Commet:
+					change_player_health(100000)
+				elif type == Root.ObjectsTypes.Block:
+					change_player_health(collision_info.collider.get_damage())
+
+func change_player_health(damage):
+	player_health -= damage
+	
+	if player_health <= 0:
+		emit_signal("player_dead")
 
 func tick():
 	var current_frames_count = current_animation.vframes * current_animation.hframes
@@ -101,7 +129,7 @@ func on_state_changed(state):
 		current_animation = idle_animation
 	elif state == State.Jump:
 		current_animation = jump_animation
-	
+		
 	current_animation.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
