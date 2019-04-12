@@ -44,7 +44,7 @@ margin_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
-text = "Game End"
+text = "Shooting Stars"
 align = 1
 valign = 1
 
@@ -62,7 +62,7 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 0.5, 10 )
 theme = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
-text = "Start"
+text = "Restart"
 script = ExtResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
