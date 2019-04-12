@@ -16,10 +16,17 @@ position = Vector2( 20, -32 )
 [node name="Player_Scene" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 384 )
 
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -5.0
 autoplay = true
+
+[node name="Ball" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1352.08, 448.712 )
+linear_velocity = Vector2( -300, 0 )
+linear_damp = 0.0
+angular_velocity = 4.0
 
 [node name="Trigger" parent="." instance=ExtResource( 5 )]
 position = Vector2( 864, 320 )
@@ -37,3 +44,11 @@ position = Vector2( 1568, 416 )
 [node name="Ball2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3904, 333.5 )
 
+<<<<<<< HEAD
+=======
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+autoplay = true
+
+>>>>>>> Fixed commets-player collisions

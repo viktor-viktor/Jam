@@ -14,7 +14,8 @@ enum ObjectsTypes{
 	Ground,
 	Commet,
 	Platform,
-	Block
+	Block,
+	Player
 }
 
 func change_world_state(state):
@@ -53,7 +54,4 @@ func _on_player_dead():
 	pass #to be implemented
 	
 func _ready():
-	#var player = get_node("Player")
-	#var player = $Game.Player
-	#player.connect("player_dead", self, _on_player_dead())
 	pass
