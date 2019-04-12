@@ -16,10 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="New Game Project"
-run/main_scene="res://Scenes/Game/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Root="*res://Root.gd"
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
