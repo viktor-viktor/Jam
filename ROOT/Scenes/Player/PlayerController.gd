@@ -1,3 +1,4 @@
+
 extends KinematicBody2D
 
 # Declare member variables here. Examples:
@@ -32,6 +33,7 @@ export(int) var flash_frames_per_second = 15
 
 ########################## CONST ##############################
 const SPEED = 400
+const EXTRA_SPEED = 50
 const GRAVITY = 80
 const JUMP_HEIGHT = -600
 const JUMP_FORCE = -180
@@ -86,6 +88,9 @@ func _process(delta):
 		return
 	
 	motion.x = SPEED
+	if camera.position.x > position.x:
+		motion.x += EXTRA_SPEED
+	
 	camera.position.x += SPEED * delta
 	
 	var is_on_floor = is_on_floor()
