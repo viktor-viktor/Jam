@@ -47,7 +47,7 @@ margin_bottom = -32.3168
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
-text = "Game End"
+text = "Game over"
 align = 1
 valign = 1
 
