@@ -11,6 +11,9 @@ func _ready():
 func on_button_up():
 	get_tree().change_scene("res://Scenes/Start/Start.tscn")
 
+func _unhandled_input(event):
+	if event as InputEventJoypadButton  and event.is_action_pressed("ui_accept"):
+		on_button_up()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

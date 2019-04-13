@@ -14,6 +14,10 @@ func _start_scene():
 func on_button_up():
 		_start_scene()
 
+func _unhandled_input(event):
+	if event as InputEventJoypadButton  and event.is_action_pressed("ui_accept"):
+		_start_scene()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
