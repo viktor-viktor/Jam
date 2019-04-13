@@ -8,11 +8,9 @@ extends Button
 func _ready():
 	connect("button_up", self, "on_button_up")
 
-func _start_scene():
-	get_tree().change_scene("res://Root.tscn")
-
 func on_button_up():
-		_start_scene()
+	get_tree().change_scene("res://Scenes/Start/Start.tscn")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
