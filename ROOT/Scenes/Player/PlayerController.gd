@@ -32,6 +32,7 @@ export(int) var flash_frames_per_second = 15
 
 ########################## CONST ##############################
 const SPEED = 400
+const EXTRA_SPEED = 50
 const GRAVITY = 80
 const JUMP_HEIGHT = -600
 const JUMP_FORCE = -180
@@ -49,7 +50,7 @@ var player_state = null
 
 var timer
 var flash_timer
-var player_health = 5
+var player_health = 3
 var gravity_present = true
 
 ########################### SIGNALS ############################
@@ -86,6 +87,9 @@ func _process(delta):
 		return
 	
 	motion.x = SPEED
+	if camera.position.x > position.x:
+		motion.x += EXTRA_SPEED
+	
 	camera.position.x += SPEED * delta
 	
 	var is_on_floor = is_on_floor()

@@ -80,4 +80,5 @@ func _on_body_entered(body):
 	if body.has_method("get_object_type"):
 		var type = body.get_object_type()
 		if type == Root.ObjectsTypes.Player:
-			body.change_player_health(1000)
+			body.change_player_health(1)
+			get_parent().remove_child(self)

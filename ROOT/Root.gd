@@ -9,6 +9,7 @@ enum WorldStates {
 
 
 signal state_changed(new_state)
+signal end_game(result)
 
 enum ObjectsTypes{
 	Ground,
@@ -42,6 +43,7 @@ func _check_input():
 		
 
 func _on_player_dead():
+	
 	get_tree().change_scene("res://Scenes/End/End.tscn")
 	
 func _ready():

@@ -12,6 +12,10 @@ func _ready():
 func on_button_up():
 	get_tree().quit()
 
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		on_button_up()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
