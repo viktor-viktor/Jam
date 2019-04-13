@@ -49,7 +49,7 @@ var player_state = null
 
 var timer
 var flash_timer
-var player_health = 5
+var player_health = 3
 
 ########################### SIGNALS ############################
 signal player_dead	
