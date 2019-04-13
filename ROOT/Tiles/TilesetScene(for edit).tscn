@@ -39,6 +39,7 @@ shape = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="Material3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.658824 )
 position = Vector2( 672, 128 )
 texture = ExtResource( 5 )
 

@@ -56,8 +56,28 @@ position = Vector2( 9088, 64 )
 scale = Vector2( 1, 3 )
 ball = NodePath("../Ball7")
 
+[node name="Trigger8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 11776, 256 )
+scale = Vector2( 1, 3 )
+ball = NodePath("../Ball8")
+
+[node name="Trigger9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 11776, 256 )
+scale = Vector2( 1, 3 )
+ball = NodePath("../Ball9")
+
+[node name="Trigger10" parent="." instance=ExtResource( 5 )]
+position = Vector2( 11776, 256 )
+scale = Vector2( 1, 3 )
+ball = NodePath("../Ball10")
+
+[node name="Trigger11" parent="." instance=ExtResource( 5 )]
+position = Vector2( 11776, 256 )
+scale = Vector2( 1, 3 )
+ball = NodePath("../Ball11")
+
 [node name="Ball" parent="." instance=ExtResource( 6 )]
-position = Vector2( 3476.92, 406.981 )
+position = Vector2( 1760, 288 )
 
 [node name="Ball2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4736, 32 )
@@ -76,4 +96,16 @@ position = Vector2( 8576, 109.5 )
 
 [node name="Ball7" parent="." instance=ExtResource( 6 )]
 position = Vector2( 10272, 352 )
+
+[node name="Ball8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 12448, 96 )
+
+[node name="Ball10" parent="." instance=ExtResource( 6 )]
+position = Vector2( 12832, 96 )
+
+[node name="Ball11" parent="." instance=ExtResource( 6 )]
+position = Vector2( 12832, 422.604 )
+
+[node name="Ball9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 12448, 416 )
 
