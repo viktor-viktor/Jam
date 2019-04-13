@@ -32,6 +32,7 @@ export(int) var flash_frames_per_second = 15
 
 ########################## CONST ##############################
 const SPEED = 400
+const EXTRA_SPEED = 50
 const GRAVITY = 80
 const JUMP_HEIGHT = -600
 const JUMP_FORCE = -180
@@ -50,6 +51,7 @@ var player_state = null
 var timer
 var flash_timer
 var player_health = 3
+var gravity_present = true
 
 ########################### SIGNALS ############################
 signal player_dead	
@@ -77,21 +79,28 @@ func _ready():
 	self.connect("player_dead", Root, "_on_player_dead")
 	
 func _process(delta):
-	motion.y += GRAVITY
+	if gravity_present:
+		motion.y += GRAVITY
 	
 	IDLE_TIME += delta
 	if IDLE_TIME < IDLE_DURARION:
 		return
 	
 	motion.x = SPEED
+	if camera.position.x > position.x:
+		motion.x += EXTRA_SPEED
+	
 	camera.position.x += SPEED * delta
 	
 	var is_on_floor = is_on_floor()
 	
+	if Input.is_action_just_pressed("ChangeGravity"):
+		gravity_present = !gravity_present
+	
 	if is_on_floor:	
 		current_jump_time_left = JUMP_DURATION	
-	
-		if Input.is_action_pressed("Jump"):
+			
+		if Input.is_action_pressed("Jump") and gravity_present:
 			motion.y = JUMP_HEIGHT
 			player_state = set_state(State.Jump)
 		elif motion.x != 0.0:
@@ -102,7 +111,7 @@ func _process(delta):
 		
 		current_jump_time_left += delta 
 		
-		if Input.is_action_pressed("Jump"):
+		if Input.is_action_pressed("Jump") and gravity_present:
 			motion.y += JUMP_FORCE * JUMP_DURATION / current_jump_time_left
 	
 	motion = move_and_slide(motion, UP)

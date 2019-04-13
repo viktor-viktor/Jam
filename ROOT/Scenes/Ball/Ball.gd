@@ -39,7 +39,7 @@ func _ready():
 
 func start():
 	angular_velocity = rand_range(0, 5.0)
-	linear_velocity.x = -300
+	linear_velocity.x = -200
 
 func _on_Button_pressed():
     set_active(!__active)
