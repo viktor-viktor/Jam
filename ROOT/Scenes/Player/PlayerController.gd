@@ -12,8 +12,14 @@ enum State{
 
 const UP = Vector2(0, -1)
 
+export(AudioStream) var jump_sound
+export(AudioStream) var switch_sound
+
 export(NodePath) var path_to_camera
 onready var camera = get_node(path_to_camera)
+
+export(NodePath) var path_to_audio_player
+onready var audio_player = get_node(path_to_audio_player)
 
 export(NodePath) var path_to_run_animation
 onready var run_animation = get_node(path_to_run_animation)
@@ -169,6 +175,8 @@ func on_state_changed(state):
 		current_animation = idle_animation
 	elif state == State.Jump:
 		current_animation = jump_animation
+		audio_player.stream = jump_sound
+		audio_player.play()
 		
 	current_animation.visible = true
 
@@ -177,6 +185,9 @@ func _start_flash():
 	flash_animation.visible = true
 
 func world_state_handler(new_state):
+	
+	audio_player.stream = switch_sound
+	audio_player.play()
 	
 	if new_state == Root.WorldStates.RED:
 		flash_animation.modulate = Color(1, 0.2, 0.2)
