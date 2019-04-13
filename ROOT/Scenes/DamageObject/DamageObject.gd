@@ -6,7 +6,7 @@ extends StaticBody2D
 
 const FRAME_COUNT = 8
 const TimeBetweenFrameChange = 0.125
-const TimeBetweenDamage = 2.0
+const TimeBetweenDamage = 1.0
 
 var time_since_frame_change = 0.0
 var time_since_damage = 0.0
