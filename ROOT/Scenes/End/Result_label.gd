@@ -6,13 +6,10 @@ extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Root.connect("end_game", self, "on_end_game")
-
-func on_end_game(result):
-	if result:
-		self.text = "WIN"
+	if Root.victory:
+		self.text = "victory"
 	else:
-		self.text = "LOSE"
+		self.text = "gave over"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

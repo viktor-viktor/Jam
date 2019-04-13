@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Background/Backgound.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/Starjout.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Scenes/End/Button.gd" type="Script" id=3]
-[ext_resource path="res://Assets/xbox-controller-button-A.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/End/Result_label.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/End/Button.gd" type="Script" id=4]
+[ext_resource path="res://Assets/xbox-controller-button-A.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -50,6 +51,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Game over"
 align = 1
 valign = 1
+script = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.5
@@ -66,7 +68,7 @@ rect_pivot_offset = Vector2( 0.5, 10 )
 theme = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 text = "Star menu"
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 
@@ -83,5 +85,5 @@ margin_bottom = 288.0
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 395.794, 343.243 )
 scale = Vector2( 0.480147, 0.40367 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 

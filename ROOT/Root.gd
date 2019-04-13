@@ -9,15 +9,17 @@ enum WorldStates {
 
 
 signal state_changed(new_state)
-signal end_game(result)
 
 enum ObjectsTypes{
 	Ground,
 	Commet,
 	Platform,
 	Block,
-	Player
+	Player,
+	LevelExit
 }
+
+var victory = false
 
 func change_world_state(state):
 
@@ -44,6 +46,12 @@ func _check_input():
 
 func _on_player_dead():
 	
+	victory = false
+	get_tree().change_scene("res://Scenes/End/End.tscn")
+	
+func _on_victory():
+	
+	victory = true
 	get_tree().change_scene("res://Scenes/End/End.tscn")
 	
 func _ready():

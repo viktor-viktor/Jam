@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Level/Level.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/main_theme.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/Trigger/Trigger.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Ball/Ball.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/LevelExit/Scene_LevelExit.tscn" type="PackedScene" id=7]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,7 +15,7 @@ script = ExtResource( 1 )
 position = Vector2( 20, -32 )
 
 [node name="Player_Scene" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 384 )
+position = Vector2( -6.20197, 379.305 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -108,4 +109,9 @@ position = Vector2( 12832, 422.604 )
 
 [node name="Ball9" parent="." instance=ExtResource( 6 )]
 position = Vector2( 12448, 416 )
+
+[node name="Scene_LevelExit" parent="." instance=ExtResource( 7 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 14973.1, 258.833 )
+scale = Vector2( 1, 9.04 )
 

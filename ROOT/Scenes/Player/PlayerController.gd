@@ -55,6 +55,7 @@ var gravity_present = true
 
 ########################### SIGNALS ############################
 signal player_dead	
+signal victory
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -77,6 +78,7 @@ func _ready():
 	
 	var root = get_node("/root/Root")
 	self.connect("player_dead", Root, "_on_player_dead")
+	self.connect("victory", Root, "_on_victory")
 	
 func _process(delta):
 	if gravity_present:
@@ -123,8 +125,8 @@ func _process(delta):
 			if collision_info.collider.has_method("get_object_type"):
 				var type = collision_info.collider.get_object_type()
 				
-				if type == Root.ObjectsTypes.Commet:
-					change_player_health(100000)
+				if type == Root.ObjectsTypes.LevelExit:
+					emit_signal("victory")
 				elif type == Root.ObjectsTypes.Block:
 					change_player_health(collision_info.collider.get_damage())
 
