@@ -9,7 +9,7 @@ func _ready():
 	if Root.victory:
 		self.text = "victory"
 	else:
-		self.text = "gave over"
+		self.text = "game over"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
