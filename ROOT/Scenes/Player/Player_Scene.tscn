@@ -51,8 +51,9 @@ position = Vector2( -2.52899, 0 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -0.000152588, -68.5215 )
+position = Vector2( -14.8051, -68.5215 )
 current = true
+zoom = Vector2( 1.2, 1.2 )
 drag_margin_left = 0.0
 drag_margin_top = 1.0
 drag_margin_right = 0.0
@@ -64,11 +65,11 @@ position = Vector2( -337.895, 2.10529 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
-position = Vector2( -366.702, 25.7825 )
+position = Vector2( -464.785, 23.9319 )
 shape = SubResource( 2 )
 
 [node name="HUD" parent="Camera2D" instance=ExtResource( 6 )]
-position = Vector2( -430, 208.521 )
+position = Vector2( -545.195, 278.521 )
 
 [node name="HealthPos" type="Position2D" parent="Camera2D"]
 position = Vector2( -450, -231.479 )
